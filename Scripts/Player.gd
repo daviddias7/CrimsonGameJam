@@ -68,4 +68,4 @@ func _physics_process(delta):
 		anim.stop()
 
 func time_magic ():
-	print("time_magic()")
+	print("time_magic")
