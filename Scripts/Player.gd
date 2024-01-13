@@ -7,7 +7,7 @@ const JUMP_VELOCITY = -400.0
 var last_direction = "right"
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = $AnimationPlayer as AnimationPlayer
-
+#oi
 func _physics_process(delta):
 	# Add the gravity.
 	#if not is_on_floor():
