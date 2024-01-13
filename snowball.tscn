@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfq45hwx25ns1"]
+
+[ext_resource type="Texture2D" uid="uid://7bsm2uagrxfi" path="res://Sprites/snowball.png" id="1_xurco"]
+
+[node name="Snowball" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("1_xurco")

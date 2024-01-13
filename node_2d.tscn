@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-[gd_scene load_steps=3 format=3 uid="uid://wlsqrb86jl23"]
-
-[ext_resource type="PackedScene" uid="uid://gx31knisxf1h" path="res://prefabs/player.tscn" id="1_w6jbj"]
-[ext_resource type="PackedScene" uid="uid://bepr17gyshtpa" path="res://prefabs/enemy_1.tscn" id="2_0f75x"]
-=======
 [gd_scene load_steps=13 format=3 uid="uid://wlsqrb86jl23"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_drlex"]
@@ -129,7 +123,6 @@ _data = {
 "walk_right": SubResource("Animation_6hpsv"),
 "walk_up": SubResource("Animation_066ws")
 }
->>>>>>> 2690acc847b357d8e0dea5034b5ed4b459428b45
 
 [node name="Node2D" type="Node2D"]
 
@@ -140,7 +133,21 @@ layer_0/tile_data = PackedInt32Array(65535, 393216, 0, 65534, 393216, 0, -2, 393
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("1_w6jbj")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_drlex")
 
-[node name="Player2" parent="." instance=ExtResource("2_0f75x")]
-position = Vector2(-107, -28)
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_cxb14")
+hframes = 13
+vframes = 21
+frame = 143
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_alpdl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_gn2as")
+}
+autoplay = "RESET"
