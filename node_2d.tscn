@@ -1,14 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://wlsqrb86jl23"]
+[gd_scene load_steps=10 format=3 uid="uid://wlsqrb86jl23"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_drlex"]
-[ext_resource type="Texture2D" path="res://Sprites/lpc-santa/lpc-santa/_preview/Download10964.png" id="1_eija0"]
+[ext_resource type="Texture2D" uid="uid://gbx4mfgo6pub" path="res://Sprites/Personagens/Download10964.png" id="2_cxb14"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_alpdl"]
 height = 52.0
 
 [sub_resource type="Animation" id="Animation_6hpsv"]
 resource_name = "walk_right"
-length = 0.6
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -17,7 +17,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [143, 151]
@@ -40,7 +40,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_h5yj0"]
 resource_name = "walk_left"
-length = 0.6
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -49,26 +49,64 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [117, 151]
+"values": [117, 125]
+}
+
+[sub_resource type="Animation" id="Animation_e8rql"]
+resource_name = "walk_down"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [131, 138]
+}
+
+[sub_resource type="Animation" id="Animation_066ws"]
+resource_name = "walk_up"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [105, 112]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gn2as"]
 _data = {
 "RESET": SubResource("Animation_iwcjo"),
+"walk_down": SubResource("Animation_e8rql"),
 "walk_left": SubResource("Animation_h5yj0"),
-"walk_right": SubResource("Animation_6hpsv")
+"walk_right": SubResource("Animation_6hpsv"),
+"walk_up": SubResource("Animation_066ws")
 }
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_drlex")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("1_eija0")
+texture = ExtResource("2_cxb14")
 hframes = 13
 vframes = 21
 frame = 143
@@ -81,4 +119,4 @@ shape = SubResource("CapsuleShape2D_alpdl")
 libraries = {
 "": SubResource("AnimationLibrary_gn2as")
 }
-autoplay = "walk_right"
+autoplay = "RESET"
