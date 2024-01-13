@@ -1,6 +1,6 @@
 extends Timer
 
-const BALL_SPEED = 500.0
+const BALL_SPEED = 600.0
 const snowball_scene = preload("res://snowball.tscn")
 
 func _on_timeout():
