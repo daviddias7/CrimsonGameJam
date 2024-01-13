@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bepr17gyshtpa"]
+[gd_scene load_steps=20 format=3 uid="uid://bepr17gyshtpa"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_vhln6"]
 [ext_resource type="Texture2D" uid="uid://bw4u33drtuu4v" path="res://Sprites/Personagens/Download67448.png" id="2_gos18"]
+[ext_resource type="Script" path="res://Scripts/Timer.gd" id="3_v3ss4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_alpdl"]
 height = 52.0
@@ -269,3 +270,9 @@ libraries = {
 "": SubResource("AnimationLibrary_gn2as")
 }
 autoplay = "RESET"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("3_v3ss4")
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
