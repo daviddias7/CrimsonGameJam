@@ -1,27 +1,36 @@
-[gd_scene load_steps=10 format=3 uid="uid://wlsqrb86jl23"]
+[gd_scene load_steps=13 format=3 uid="uid://wlsqrb86jl23"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_drlex"]
+[ext_resource type="Texture2D" uid="uid://c5oe7e7lelhtb" path="res://SnowFloor.png" id="1_r2ebt"]
 [ext_resource type="Texture2D" uid="uid://gbx4mfgo6pub" path="res://Sprites/Personagens/Download10964.png" id="2_cxb14"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8nuvj"]
+texture = ExtResource("1_r2ebt")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lkygn"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_8nuvj")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_alpdl"]
 height = 52.0
-
-[sub_resource type="Animation" id="Animation_6hpsv"]
-resource_name = "walk_right"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [143, 151]
-}
 
 [sub_resource type="Animation" id="Animation_iwcjo"]
 length = 0.001
@@ -36,6 +45,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [143]
+}
+
+[sub_resource type="Animation" id="Animation_e8rql"]
+resource_name = "walk_down"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [131, 138]
 }
 
 [sub_resource type="Animation" id="Animation_h5yj0"]
@@ -55,8 +81,8 @@ tracks/0/keys = {
 "values": [117, 125]
 }
 
-[sub_resource type="Animation" id="Animation_e8rql"]
-resource_name = "walk_down"
+[sub_resource type="Animation" id="Animation_6hpsv"]
+resource_name = "walk_right"
 length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
@@ -69,7 +95,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [131, 138]
+"values": [143, 151]
 }
 
 [sub_resource type="Animation" id="Animation_066ws"]
@@ -99,6 +125,11 @@ _data = {
 }
 
 [node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_lkygn")
+format = 2
+layer_0/tile_data = PackedInt32Array(65535, 393216, 0, 65534, 393216, 0, -2, 393216, 0, -1, 393216, 0, -65536, 393216, 0, -65535, 393216, 0, 2, 393216, 0, 3, 393216, 0, 65540, 393216, 0, 131076, 393216, 0, 65539, 393216, 0, 65538, 393216, 0, 1, 393216, 0, 4, 393216, 0, 5, 393216, 0, 65537, 393216, 0, 65536, 393216, 0, 0, 393216, 0, 131071, 393216, 0, 196607, 393216, 0, 196606, 393216, 0, 131070, 393216, 0, 131069, 393216, 0, 131068, 393216, 0, 131067, 393216, 0, 65531, 393216, 0, 65532, 393216, 0, 65533, 393216, 0, -3, 393216, 0, -65539, 393216, 0, -65538, 393216, 0, 131072, 393216, 0, 131073, 393216, 0, 131074, 393216, 0, 131075, 393216, 0, 196611, 393216, 0, 196610, 393216, 0, 196609, 393216, 0, 262144, 393216, 0, 327679, 393216, 0, 262143, 393216, 0, 262142, 393216, 0, 262141, 393216, 0, 196608, 393216, 0, 262140, 393216, 0, 196604, 393216, 0, 196605, 393216, 0, 196603, 393216, 0, -5, 393216, 0, -65541, 393216, 0, -65540, 393216, 0, -4, 393216, 0, -65537, 393216, 0, -131072, 393216, 0, -131071, 393216, 0, -131070, 393216, 0, -131069, 393216, 0, -65534, 393216, 0, -65533, 393216, 0, -131068, 393216, 0, -131067, 393216, 0, -65531, 393216, 0, -65532, 393216, 0, -196603, 393216, 0, -196604, 393216, 0, -196605, 393216, 0, -196606, 393216, 0, -196607, 393216, 0, -196608, 393216, 0, -131073, 393216, 0, -131074, 393216, 0, -131075, 393216, 0, -131076, 393216, 0, -131077, 393216, 0, 262139, 393216, 0, 327675, 393216, 0, 327676, 393216, 0, 327678, 393216, 0, 327677, 393216, 0, 262145, 393216, 0, 262146, 393216, 0, 262147, 393216, 0, 262148, 393216, 0, 196612, 393216, 0, 196613, 393216, 0, 131077, 393216, 0, 65541, 393216, 0, 262149, 393216, 0, -262139, 393216, 0, -262140, 393216, 0, -262141, 393216, 0, -262142, 393216, 0, -262143, 393216, 0, -262144, 393216, 0, -196609, 393216, 0, -196610, 393216, 0, -196611, 393216, 0, -196612, 393216, 0, -196613, 393216, 0, 327674, 393216, 0, 262138, 393216, 0, 196602, 393216, 0, 131066, 393216, 0, 65530, 393216, 0, -6, 393216, 0, -65542, 393216, 0, -131078, 393216, 0, -196614, 393216, 0, -327675, 393216, 0, -327676, 393216, 0, -327677, 393216, 0, -327678, 393216, 0, -327679, 393216, 0, -327680, 393216, 0, -262145, 393216, 0, -262146, 393216, 0, -262147, 393216, 0, -262148, 393216, 0, -262149, 393216, 0, -262150, 393216, 0, -393210, 262144, 0, -393211, 196608, 0, -393212, 131072, 0, -393213, 65536, 0, -393216, 131072, 0, -327684, 131072, 0, -327682, 131072, 0, -327685, 65536, 0, -327683, 65536, 0, -393214, 196608, 0, -327681, 196608, 0, -393215, 65536, 0, -327686, 131072, 0, -327687, 0, 0, -262151, 327680, 0, -65543, 327680, 0, 131065, 327680, 0, -7, 327680, 0, -131079, 524288, 0, 65529, 524288, 0, -196615, 327680, 0, 196601, 327680, 0, 262137, 327680, 0, 327673, 327680, 0, 393209, 786432, 0, 393211, 851968, 0, 327682, 851968, 0, 393214, 917504, 0, 393215, 851968, 0, 327681, 983040, 0, 327680, 917504, 0, 393212, 917504, 0, 393210, 983040, 0, -327674, 720896, 0, -65530, 720896, 0, 196614, 720896, 0, 6, 589824, 0, 131078, 589824, 0, -196602, 589824, 0, 327686, 1048576, 0, 327685, 851968, 0, 327683, 851968, 0, 327684, 917504, 0, 393213, 983040, 0, -131066, 720896, 0, 65542, 458752, 0, -262138, 458752, 0, 262150, 458752, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
