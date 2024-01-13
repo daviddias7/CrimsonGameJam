@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://gbx4mfgo6pub" path="res://Sprites/Personagens/Download10964.png" id="2_gkej0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_alpdl"]
-height = 52.0
+height = 26.0
 
 [sub_resource type="Animation" id="Animation_iwcjo"]
 length = 0.001
@@ -261,7 +261,7 @@ vframes = 21
 frame = 143
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(0, 17)
 shape = SubResource("CapsuleShape2D_alpdl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

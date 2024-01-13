@@ -12,14 +12,14 @@ func _physics_process(delta):
 	#if not is_on_floor():
 	#	velocity.y += gravity * delta
 
-	if last_direction == "left":
-		anim.play("stop_left")
-	elif last_direction == "right":
-		anim.play("stop_right")
-	elif last_direction == "up":
-		anim.play("stop_up")
-	elif last_direction == "down":
-		anim.play("stop_down")
+	#if last_direction == "left":
+	#	anim.play("stop_left")
+	#elif last_direction == "right":
+	#	anim.play("stop_right")
+	#elif last_direction == "up":
+	#	anim.play("stop_up")
+	#elif last_direction == "down":
+	#	anim.play("stop_down")
 		
 	# Get the input direction and handle the movement/deceleration.
 	var direction = (player.position - position).normalized()
@@ -48,6 +48,5 @@ func _physics_process(delta):
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
-	if !direction.x and !direction.y:
-		anim.stop()
-	
+	#if !direction.x and !direction.y:
+	#	anim.stop()
