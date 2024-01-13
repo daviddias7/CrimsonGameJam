@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://wlsqrb86jl23"]
+[gd_scene load_steps=7 format=3 uid="uid://wlsqrb86jl23"]
 
 [ext_resource type="Texture2D" uid="uid://c5oe7e7lelhtb" path="res://SnowFloor.png" id="1_r2ebt"]
 [ext_resource type="PackedScene" uid="uid://gx31knisxf1h" path="res://prefabs/player.tscn" id="2_sf2pd"]
+[ext_resource type="PackedScene" uid="uid://bepr17gyshtpa" path="res://prefabs/enemy_1.tscn" id="3_yxmcs"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="4_0gg72"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8nuvj"]
 texture = ExtResource("1_r2ebt")
@@ -38,3 +40,7 @@ layer_0/tile_data = PackedInt32Array(65535, 393216, 0, 65534, 393216, 0, -2, 393
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_sf2pd")]
+
+[node name="Enemy" parent="." instance=ExtResource("3_yxmcs")]
+position = Vector2(254, 107)
+script = ExtResource("4_0gg72")
