@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://wlsqrb86jl23"]
+
+[ext_resource type="Texture2D" uid="uid://d1kwf17lgvv6u" path="res://Sprites/lpc-santa/lpc-santa/_preview/Download10964.png" id="1_eija0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_eija0")
+hframes = 13
+vframes = 21
+frame = 170
