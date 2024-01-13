@@ -25,7 +25,7 @@ func _physics_process(delta):
 			anim.play("stop_down")
 		
 		time_magic()
-	
+		
 		if Input.is_action_just_pressed("parry"):
 			if last_direction == "left":
 				anim.play("parring_left")
@@ -35,6 +35,8 @@ func _physics_process(delta):
 				anim.play("parring_up")
 			elif last_direction == "down":
 				anim.play("parring_down")
+			
+			print("parring " + last_direction)
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction_x = Input.get_axis("ui_left", "ui_right")
@@ -64,8 +66,6 @@ func _physics_process(delta):
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
-	if !direction_x and !direction_y:
-		anim.stop()
 
 func time_magic ():
 	print("time_magic()")
