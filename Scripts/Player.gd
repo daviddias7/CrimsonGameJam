@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+var health = 3;
 var last_direction = "right"
 var acting = false;
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -71,6 +72,12 @@ func _physics_process(delta):
 func time_magic ():
 	print("time_magic()")
 
+func recieve_damage():
+	print("Player Damaged")
+	health -= 1
+	if health == 0:
+		print("Game Over")
+	pass
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name.begins_with("stop"):
