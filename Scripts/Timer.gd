@@ -6,7 +6,7 @@ const max_time = 1
 
 const BALL_SPEED = 600.0
 const snowball_scene = preload("res://snowball.tscn")
-const desvio_angular = 0.1 #angulo em radianos
+const desvio_angular = 0.05 #angulo em radianos
 
 var indicator = false # false = fazer animação // true = spawnar bola de neve
 @onready var enemy = $"../.." as CharacterBody2D
