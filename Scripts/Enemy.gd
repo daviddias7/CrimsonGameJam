@@ -70,7 +70,6 @@ func hurt():
 		anim.play("death")
 		acting = true
 		dead = true
-		spawner.queue_free()
 		await get_tree().create_timer(0.4).timeout
 		col.queue_free()
 
