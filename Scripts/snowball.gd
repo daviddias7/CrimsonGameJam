@@ -1,6 +1,7 @@
 extends Node2D
 
 var time_stopped = false
+var aux_vel
 
 @onready var anim = $AnimationPlayer as AnimationPlayer
 @onready var rig = $RigidBody2D as RigidBody2D
@@ -9,21 +10,23 @@ var time_stopped = false
 
 func _ready():
 	pass
-	
-func _process(delta):
+
+func _physics_process(delta):
 	if world.timming:
 		if time_stopped:
 			rig.freeze = false
+			rig.sleeping = false
 			anim.play()
+			rig.linear_velocity = aux_vel
 	else:
+		aux_vel = rig.linear_velocity
 		time_stopped = true
+		rig.freeze = true
 		anim.pause()
-
 
 func _on_area_2d_area_entered(area):
 	if get_path_to(area) != get_path_to(get_parent().get_parent()):
 		anim.play("poof")
-		rig.lock_rotation = true
 		rig.angular_velocity = 0
 		rig.constant_torque = 0
 		rig.linear_velocity = rig.linear_velocity.normalized() * 200
