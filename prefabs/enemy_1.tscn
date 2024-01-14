@@ -6,7 +6,6 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_alpdl"]
 radius = 8.0
-height = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfyok"]
 height = 50.0
@@ -268,7 +267,7 @@ vframes = 21
 frame = 143
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 19)
+position = Vector2(0, 14)
 shape = SubResource("CapsuleShape2D_alpdl")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -292,3 +291,4 @@ libraries = {
 autoplay = "RESET"
 
 [connection signal="timeout" from="Area2D/Timer" to="Area2D/Timer" method="_on_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
