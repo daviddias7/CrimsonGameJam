@@ -9,6 +9,7 @@ var last_direction = "right"
 var acting = false;
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = $AnimationPlayer as AnimationPlayer
+#@onready var world = $".." as Node2D
 
 func _physics_process(delta):
 	#if not is_on_floor():
@@ -71,14 +72,16 @@ func _physics_process(delta):
 			anim.stop()
 
 func time_magic ():
-	print("time_magic()")
+	#world.timming = false
+	#await get_tree().create_timer(2).timeout
+	#world.timming = true
+	pass
 
 func recieve_damage():
 	print("Player Damaged")
 	health -= 1
 	if health == 0:
 		print("Game Over")
-	pass
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name.begins_with("stop_"):

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/snowball.gd" id="1_38e0m"]
 [ext_resource type="Texture2D" uid="uid://7bsm2uagrxfi" path="res://Sprites/snowball.png" id="1_xurco"]
-[ext_resource type="Texture2D" path="res://Sprites/Efects/Poof.png" id="2_elb6c"]
+[ext_resource type="Texture2D" uid="uid://ck3ew3bbt4rv5" path="res://Sprites/Efects/Poof.png" id="2_elb6c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ksj61"]
 radius = 8.0
@@ -140,7 +140,6 @@ collision_layer = 8
 gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-rotation = 3.14159
 texture = ExtResource("1_xurco")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
@@ -149,7 +148,6 @@ disabled = true
 debug_color = Color(0.968627, 0.137255, 0.290196, 0.419608)
 
 [node name="Area2D" type="Area2D" parent="RigidBody2D"]
-scale = Vector2(1, 1)
 collision_layer = 8
 collision_mask = 29
 

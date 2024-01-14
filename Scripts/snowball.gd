@@ -1,16 +1,25 @@
 extends Node2D
 
+var time_stopped = false
 
 @onready var anim = $AnimationPlayer as AnimationPlayer
 @onready var rig = $RigidBody2D as RigidBody2D
 @onready var col = $RigidBody2D/Area2D as Area2D
+#@onready var world = $".." as Node2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
+	#print($"..".name)
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#if world.timming:
+	#	if time_stopped:
+	#		rig.freeze = false
+	#		anim.play()
+	#else:
+	#	time_stopped = true
+	#	anim.pause()
 	pass
 
 func _on_area_2d_area_entered(area):
@@ -21,7 +30,7 @@ func _on_area_2d_area_entered(area):
 		rig.angular_velocity = 0
 		rig.constant_torque = 0
 		rig.linear_velocity = rig.linear_velocity.normalized() * 200
-		
+
 		col.queue_free()
 		
 		if area.is_in_group("Enemy"):

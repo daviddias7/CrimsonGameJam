@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://8fvym6adnsad"]
+[gd_scene load_steps=7 format=3 uid="uid://8fvym6adnsad"]
 
+[ext_resource type="Script" path="res://Scripts/node_2d.gd" id="1_ijsvs"]
 [ext_resource type="Texture2D" uid="uid://c5oe7e7lelhtb" path="res://SnowFloor.png" id="1_r2ebt"]
 [ext_resource type="PackedScene" uid="uid://gx31knisxf1h" path="res://prefabs/player.tscn" id="2_sf2pd"]
 [ext_resource type="PackedScene" uid="uid://bepr17gyshtpa" path="res://prefabs/enemy_1.tscn" id="3_yxmcs"]
@@ -81,6 +82,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_8nuvj")
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_ijsvs")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lkygn")
