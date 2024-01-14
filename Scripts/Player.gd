@@ -94,7 +94,7 @@ func recieve_damage(damage):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name.begins_with("stop_"):
 		acting = false
-	if anim_name.begins_with("parring_"):
+	elif anim_name.begins_with("parring_"):
 		acting = false
 		parrying = false
 		can_parry = false
@@ -102,7 +102,6 @@ func _on_animation_player_animation_finished(anim_name):
 		
 func is_parrying():
 	return parrying
-
 
 func _on_timer_timeout():
 	can_parry = true
