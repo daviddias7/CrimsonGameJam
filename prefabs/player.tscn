@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://gx31knisxf1h"]
+[gd_scene load_steps=24 format=3 uid="uid://gx31knisxf1h"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3w6xn"]
 [ext_resource type="Texture2D" uid="uid://gbx4mfgo6pub" path="res://Sprites/Personagens/Download10964.png" id="2_gkej0"]
@@ -234,6 +234,74 @@ tracks/0/keys = {
 "values": [105, 112]
 }
 
+[sub_resource type="Animation" id="Animation_wbowv"]
+resource_name = "slow_walk_down"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [131, 138]
+}
+
+[sub_resource type="Animation" id="Animation_g583h"]
+resource_name = "slow_walk_left"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [117, 125]
+}
+
+[sub_resource type="Animation" id="Animation_s2lp4"]
+resource_name = "slow_walk_right"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [143, 151]
+}
+
+[sub_resource type="Animation" id="Animation_wsjn4"]
+resource_name = "slow_walk_up"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [105, 112]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gn2as"]
 _data = {
 "RESET": SubResource("Animation_iwcjo"),
@@ -242,6 +310,10 @@ _data = {
 "parring_left": SubResource("Animation_7guce"),
 "parring_right": SubResource("Animation_y8bm7"),
 "parring_up": SubResource("Animation_wochv"),
+"slow_walk_down": SubResource("Animation_wbowv"),
+"slow_walk_left": SubResource("Animation_g583h"),
+"slow_walk_right": SubResource("Animation_s2lp4"),
+"slow_walk_up": SubResource("Animation_wsjn4"),
 "stop_down": SubResource("Animation_k5bal"),
 "stop_left": SubResource("Animation_5sag5"),
 "stop_right": SubResource("Animation_yijlb"),

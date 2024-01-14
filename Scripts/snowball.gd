@@ -18,11 +18,13 @@ func _physics_process(delta):
 			rig.sleeping = false
 			anim.play()
 			rig.linear_velocity = aux_vel
+			self.modulate = world.mod
 	else:
 		aux_vel = rig.linear_velocity
 		time_stopped = true
 		rig.freeze = true
 		anim.pause()
+		self.modulate = world.mod
 
 func _on_area_2d_area_entered(area):
 	if get_path_to(area) != get_path_to(get_parent().get_parent()):

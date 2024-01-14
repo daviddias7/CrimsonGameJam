@@ -2,12 +2,15 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SLOW_SPEED = 150.0
+const seconds_stopped = 2 # Em segundos
 
 var health = 3;
 var last_direction = "right"
 var acting = false;
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var walking_speed = SPEED
+var walk_type = "walk_"
+
 @onready var anim = $AnimationPlayer as AnimationPlayer
 @onready var world = $".." as Node2D
 
@@ -41,27 +44,25 @@ func _physics_process(delta):
 		var direction_y = Input.get_axis("ui_down", "ui_up")
 		
 		if direction_x:
-			velocity.x = direction_x * SPEED
+			velocity.x = direction_x * walking_speed
 			if direction_x < 0:
-				anim.play("walk_left")
 				last_direction = "left"
 			else:
-				anim.play("walk_right")
 				last_direction = "right"
+			anim.play(walk_type + last_direction)
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, walking_speed)
 			
 		if direction_y:
-			velocity.y = -direction_y * SPEED
+			velocity.y = -direction_y * walking_speed
 			if !velocity.x:
 				if direction_y > 0:
-					anim.play("walk_up")
 					last_direction = "up"
 				else:
-					anim.play("walk_down")
 					last_direction = "down"
+			anim.play(walk_type + last_direction)
 		else:
-			velocity.y = move_toward(velocity.y, 0, SPEED)
+			velocity.y = move_toward(velocity.y, 0, walking_speed)
 
 		move_and_slide()
 		if !direction_x and !direction_y:
@@ -69,15 +70,21 @@ func _physics_process(delta):
 
 func time_magic ():
 	world.timming = false
-	await get_tree().create_timer(2).timeout
+	world.mod = 0xa6a6b0ff
+	walking_speed = SLOW_SPEED
+	walk_type = "slow_walk_"
+	await get_tree().create_timer(seconds_stopped).timeout
 	world.timming = true
+	world.mod = 0xffffffff
+	walking_speed = SPEED
+	walk_type = "walk_"
 	pass
 
 func recieve_damage():
-	print("Player Damaged")
+	#print("Player Damaged")
 	health -= 1
-	if health == 0:
-		print("Game Over")
+	#if health == 0:
+		#print("Game Over")
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name.begins_with("stop_"):

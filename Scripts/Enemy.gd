@@ -27,26 +27,25 @@ func _physics_process(delta):
 			if direction.x:
 				velocity.x = direction.x * SPEED
 				if direction.x < 0:
-					anim.play("walk_left")
 					last_direction = "left"
 				else:
-					anim.play("walk_right")
 					last_direction = "right"
 			else:
 				velocity.x = move_toward(velocity.x, 0, SPEED)
 				
 			if direction.y:
 				velocity.y = direction.y * SPEED
-				if absf(velocity.x) < absf(velocity.y):
-					if direction.y < 0:
-						anim.play("walk_up")
-						last_direction = "up"
-					else:
-						anim.play("walk_down")
-						last_direction = "down"
 			else:
 				velocity.y = move_toward(velocity.y, 0, SPEED)
-
+			
+			if absf(velocity.x) < absf(velocity.y):
+				if direction.y < 0:
+					last_direction = "up"
+				else:
+					last_direction = "down"
+			if velocity:
+				anim.play("walk_" + last_direction)
+						
 			move_and_slide()
 	else:
 		stop_time()
@@ -57,8 +56,7 @@ func attack(indicator):
 		anim.play(animation)
 		acting = true
 	elif indicator and !dead:
-		spawner.spawn_snowball()
-		print("spawned")
+		spawner.spawn_snowball(player.position)
 
 
 func _on_animation_player_animation_finished(anim_name):
@@ -80,8 +78,10 @@ func stop_time():
 	anim.pause()
 	time_stopped = true
 	spawner.paused = true
+	self.modulate = world.mod
 
 func play_time():
 	anim.play()
 	time_stopped = false
 	spawner.paused = false
+	self.modulate = world.mod
