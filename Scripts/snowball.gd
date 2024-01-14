@@ -5,25 +5,22 @@ var time_stopped = false
 @onready var anim = $AnimationPlayer as AnimationPlayer
 @onready var rig = $RigidBody2D as RigidBody2D
 @onready var col = $RigidBody2D/Area2D as Area2D
-#@onready var world = $".." as Node2D
+@onready var world = $".."/".."/".."/".." as Node2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	#print($"..".name)
 	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	
 func _process(delta):
-	#if world.timming:
-	#	if time_stopped:
-	#		rig.freeze = false
-	#		anim.play()
-	#else:
-	#	time_stopped = true
-	#	anim.pause()
-	pass
+	if world.timming:
+		if time_stopped:
+			rig.freeze = false
+			anim.play()
+	else:
+		time_stopped = true
+		anim.pause()
+
 
 func _on_area_2d_area_entered(area):
-	print(area.get_groups())
 	if get_path_to(area) != get_path_to(get_parent().get_parent()):
 		anim.play("poof")
 		rig.lock_rotation = true

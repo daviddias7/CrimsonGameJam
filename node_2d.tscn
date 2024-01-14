@@ -105,6 +105,3 @@ drag_bottom_margin = 0.5
 
 [node name="Enemy" parent="." instance=ExtResource("3_yxmcs")]
 position = Vector2(480, 234)
-
-[node name="Enemy2" parent="." instance=ExtResource("3_yxmcs")]
-position = Vector2(-159, -60)

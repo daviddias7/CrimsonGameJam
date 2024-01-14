@@ -5,21 +5,21 @@ const SPEED = 100.0
 var last_direction = "right"
 var acting = false
 var dead = false
-#var time_stopped = false
+var time_stopped = false
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = $AnimationPlayer as AnimationPlayer
 @onready var player = get_parent().get_node("Player")
 @onready var spawner = $Area2D/Timer as Timer
 @onready var col = $Area2D/CollisionShape2D as CollisionShape2D
-#@onready var world = $".." as Node2D
+@onready var world = $".." as Node2D
+
 
 func _physics_process(delta):
-	
 
-	#if world.timming:
-		#if time_stopped:
-			#anim.play()
+	if world.timming:
+		if time_stopped:
+			play_time()
 
 		if !acting:
 			var direction = (player.position - position).normalized()
@@ -48,14 +48,17 @@ func _physics_process(delta):
 				velocity.y = move_toward(velocity.y, 0, SPEED)
 
 			move_and_slide()
-	#else:
-	#	stop_time()
+	else:
+		stop_time()
 	
-func attack():
-	if !acting:
+func attack(indicator):
+	if !acting and !indicator:
 		var animation = "parring_" + last_direction
 		anim.play(animation)
 		acting = true
+	elif indicator and !dead:
+		spawner.spawn_snowball()
+		print("spawned")
 
 
 func _on_animation_player_animation_finished(anim_name):
@@ -75,4 +78,10 @@ func hurt():
 
 func stop_time():
 	anim.pause()
-	#time_stopped = true
+	time_stopped = true
+	spawner.paused = true
+
+func play_time():
+	anim.play()
+	time_stopped = false
+	spawner.paused = false

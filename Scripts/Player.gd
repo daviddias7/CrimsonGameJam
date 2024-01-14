@@ -9,12 +9,10 @@ var last_direction = "right"
 var acting = false;
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = $AnimationPlayer as AnimationPlayer
-#@onready var world = $".." as Node2D
+@onready var world = $".." as Node2D
 
 func _physics_process(delta):
-	#if not is_on_floor():
-	#	velocity.y += gravity * delta
-	# Handle jump.
+
 	if Input.is_action_just_pressed("ui_accept"):
 		if last_direction == "left":
 			anim.play("stop_left")
@@ -37,9 +35,7 @@ func _physics_process(delta):
 		elif last_direction == "down":
 			anim.play("parring_down")
 		acting = true
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	
+
 	if !acting:
 		var direction_x = Input.get_axis("ui_left", "ui_right")
 		var direction_y = Input.get_axis("ui_down", "ui_up")
@@ -72,9 +68,9 @@ func _physics_process(delta):
 			anim.stop()
 
 func time_magic ():
-	#world.timming = false
-	#await get_tree().create_timer(2).timeout
-	#world.timming = true
+	world.timming = false
+	await get_tree().create_timer(2).timeout
+	world.timming = true
 	pass
 
 func recieve_damage():
