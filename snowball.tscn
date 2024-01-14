@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfq45hwx25ns1"]
+[gd_scene load_steps=9 format=3 uid="uid://bfq45hwx25ns1"]
 
 [ext_resource type="Script" path="res://Scripts/snowball.gd" id="1_38e0m"]
 [ext_resource type="Texture2D" uid="uid://7bsm2uagrxfi" path="res://Sprites/snowball.png" id="1_xurco"]
-[ext_resource type="Texture2D" uid="uid://ck3ew3bbt4rv5" path="res://Sprites/Efects/Poof.png" id="2_elb6c"]
+[ext_resource type="Texture2D" path="res://Sprites/Efects/Poof.png" id="2_elb6c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ksj61"]
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ugm7"]
 radius = 15.0333
@@ -33,6 +36,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody2D/Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_221px"]
@@ -116,7 +143,13 @@ gravity_scale = 0.0
 rotation = 3.14159
 texture = ExtResource("1_xurco")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_ksj61")
+disabled = true
+debug_color = Color(0.968627, 0.137255, 0.290196, 0.419608)
+
 [node name="Area2D" type="Area2D" parent="RigidBody2D"]
+scale = Vector2(1, 1)
 collision_layer = 8
 collision_mask = 29
 

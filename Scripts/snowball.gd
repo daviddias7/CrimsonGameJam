@@ -26,7 +26,7 @@ func _on_area_2d_area_entered(area):
 		
 		if area.is_in_group("Enemy"):
 			print("Enemy Killed")
-			area.get_parent().queue_free()
+			area.get_parent().hurt()
 		elif area.is_in_group("Player"):
 			area.get_parent().recieve_damage()
 

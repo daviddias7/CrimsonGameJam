@@ -38,36 +38,37 @@ func _physics_process(delta):
 		acting = true
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction_x = Input.get_axis("ui_left", "ui_right")
-	var direction_y = Input.get_axis("ui_down", "ui_up")
 	
-	if direction_x:
-		velocity.x = direction_x * SPEED
-		if direction_x < 0:
-			anim.play("walk_left")
-			last_direction = "left"
-		else:
-			anim.play("walk_right")
-			last_direction = "right"
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if !acting:
+		var direction_x = Input.get_axis("ui_left", "ui_right")
+		var direction_y = Input.get_axis("ui_down", "ui_up")
 		
-	if direction_y:
-		velocity.y = -direction_y * SPEED
-		if !velocity.x:
-			if direction_y > 0:
-				anim.play("walk_up")
-				last_direction = "up"
+		if direction_x:
+			velocity.x = direction_x * SPEED
+			if direction_x < 0:
+				anim.play("walk_left")
+				last_direction = "left"
 			else:
-				anim.play("walk_down")
-				last_direction = "down"
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+				anim.play("walk_right")
+				last_direction = "right"
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			
+		if direction_y:
+			velocity.y = -direction_y * SPEED
+			if !velocity.x:
+				if direction_y > 0:
+					anim.play("walk_up")
+					last_direction = "up"
+				else:
+					anim.play("walk_down")
+					last_direction = "down"
+		else:
+			velocity.y = move_toward(velocity.y, 0, SPEED)
 
-	move_and_slide()
-	if !direction_x and !direction_y and !acting:
-		anim.stop()
-		
+		move_and_slide()
+		if !direction_x and !direction_y:
+			anim.stop()
 
 func time_magic ():
 	print("time_magic()")
@@ -80,7 +81,7 @@ func recieve_damage():
 	pass
 
 func _on_animation_player_animation_finished(anim_name):
-	if anim_name.begins_with("stop"):
+	if anim_name.begins_with("stop_"):
 		acting = false
-	if anim_name.begins_with("parring"):
+	if anim_name.begins_with("parring_"):
 		acting = false
