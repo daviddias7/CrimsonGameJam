@@ -8,4 +8,4 @@ func _on_timeout():
 	snowball_instance.position = get_parent().position
 	snowball_instance.get_node("RigidBody2D").linear_velocity = BALL_SPEED * (get_parent().get_parent().get_node("Player").position - snowball_instance.position).normalized()
 	add_child(snowball_instance)
-	wait_time = randf_range(0, 1)
+	wait_time = randf_range(0.1, 1)
