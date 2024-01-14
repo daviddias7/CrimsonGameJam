@@ -1,13 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfq45hwx25ns1"]
+[gd_scene load_steps=9 format=3 uid="uid://bfq45hwx25ns1"]
 
+[ext_resource type="Script" path="res://Scripts/snowball.gd" id="1_38e0m"]
 [ext_resource type="Texture2D" uid="uid://7bsm2uagrxfi" path="res://Sprites/snowball.png" id="1_xurco"]
 [ext_resource type="Texture2D" uid="uid://ck3ew3bbt4rv5" path="res://Sprites/Efects/Poof.png" id="2_elb6c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ksj61"]
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ugm7"]
 radius = 15.0333
 
-[sub_resource type="Animation" id="Animation_g2464"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_um85j"]
+resource_name = "normal"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -27,10 +32,10 @@ tracks/1/path = NodePath("RigidBody2D/Sprite2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0]
+"values": [0.0, 6.28319]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -87,6 +92,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_221px"]
 resource_name = "poof"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -96,7 +102,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [0.0]
 }
 tracks/1/type = "value"
@@ -106,10 +112,10 @@ tracks/1/path = NodePath("RigidBody2D/Sprite2D:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("2_elb6c")]
+"values": [ExtResource("2_elb6c"), ExtResource("2_elb6c")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -121,7 +127,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [6]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -130,33 +136,59 @@ tracks/3/path = NodePath("RigidBody2D/Sprite2D:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1]
+"values": [5, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 29]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y1n1b"]
 _data = {
-"RESET": SubResource("Animation_g2464"),
 "normal": SubResource("Animation_um85j"),
 "poof": SubResource("Animation_221px")
 }
 
 [node name="Snowball" type="Node2D"]
+script = ExtResource("1_38e0m")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 8
 gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+rotation = 3.14159
 texture = ExtResource("1_xurco")
+frame = 29
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_ksj61")
+disabled = true
+debug_color = Color(0.968627, 0.137255, 0.290196, 0.419608)
+
+[node name="Area2D" type="Area2D" parent="RigidBody2D"]
+scale = Vector2(1, 1)
+collision_layer = 8
+collision_mask = 29
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
 shape = SubResource("CircleShape2D_8ugm7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_y1n1b")
 }
-autoplay = "normal"
+
+[connection signal="area_entered" from="RigidBody2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
