@@ -61,6 +61,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody2D/Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_221px"]
 resource_name = "poof"
@@ -125,6 +137,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [0, 29]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RigidBody2D/Sprite2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y1n1b"]
 _data = {
@@ -142,6 +166,7 @@ lock_rotation = true
 freeze_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+rotation = 3.14159
 texture = ExtResource("1_xurco")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]

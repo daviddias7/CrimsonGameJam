@@ -8,9 +8,6 @@ var aux_vel
 @onready var col = $RigidBody2D/Area2D as Area2D
 @onready var world = $".."/".."/".."/".." as Node2D
 
-func _ready():
-	pass
-
 func _physics_process(delta):
 	if world.timming:
 		if time_stopped:
@@ -39,7 +36,9 @@ func _on_area_2d_area_entered(area):
 			print("Enemy Killed")
 			area.get_parent().hurt()
 		elif area.is_in_group("Player"):
-			area.get_parent().recieve_damage()
+			area.get_parent().recieve_damage(1)
+		elif area.is_in_group("Interactive"):
+			area.get_parent().hitted()
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "poof":
