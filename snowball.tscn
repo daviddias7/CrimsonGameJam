@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfq45hwx25ns1"]
+[gd_scene load_steps=16 format=3 uid="uid://bfq45hwx25ns1"]
 
 [ext_resource type="Script" path="res://Scripts/snowball.gd" id="1_38e0m"]
 [ext_resource type="Texture2D" uid="uid://7bsm2uagrxfi" path="res://Sprites/snowball.png" id="1_xurco"]
 [ext_resource type="Texture2D" uid="uid://ck3ew3bbt4rv5" path="res://Sprites/Efects/Poof.png" id="2_elb6c"]
+[ext_resource type="Texture2D" uid="uid://qjcfm4k2pg6b" path="res://Sprites/Efects/ParryUIElement.png" id="4_q8sia"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ksj61"]
 radius = 8.0
@@ -150,10 +151,158 @@ tracks/5/keys = {
 "values": [Vector2(0.8, 0.8)]
 }
 
+[sub_resource type="Animation" id="Animation_0g8qr"]
+resource_name = "parry"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_xurco")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody2D/Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody2D/Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.95, 0.95)]
+}
+
+[sub_resource type="Animation" id="Animation_jeygy"]
+length = 0.001
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y1n1b"]
 _data = {
+"RESET": SubResource("Animation_jeygy"),
 "normal": SubResource("Animation_um85j"),
+"parry": SubResource("Animation_0g8qr"),
 "poof": SubResource("Animation_221px")
+}
+
+[sub_resource type="Animation" id="Animation_bv6i6"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RigidBody2D/Effect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_jlgfb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RigidBody2D/Effect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RigidBody2D/Effect:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_n5fnl"]
+resource_name = "parry"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RigidBody2D/Effect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.025),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_q8sia")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RigidBody2D/Effect:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a1b35"]
+_data = {
+"RESET": SubResource("Animation_jlgfb"),
+"idle": SubResource("Animation_bv6i6"),
+"parry": SubResource("Animation_n5fnl")
 }
 
 [node name="Snowball" type="Node2D"]
@@ -165,8 +314,12 @@ gravity_scale = 0.0
 lock_rotation = true
 freeze_mode = 1
 
+[node name="Effect" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(2, 2)
+hframes = 6
+
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-rotation = 3.14159
+scale = Vector2(0.95, 0.95)
 texture = ExtResource("1_xurco")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
@@ -186,6 +339,13 @@ libraries = {
 "": SubResource("AnimationLibrary_y1n1b")
 }
 autoplay = "normal"
+
+[node name="AnimationPlayer_2" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+libraries = {
+"": SubResource("AnimationLibrary_a1b35")
+}
+autoplay = "idle"
 
 [connection signal="area_entered" from="RigidBody2D/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

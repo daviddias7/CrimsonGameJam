@@ -1,17 +1,20 @@
 extends Node2D
 
+const parry_boost = 1.5
+
 var time_stopped = false
 var aux_vel
-var parried
+var parried = false
+var separeted = false
+var pos_exp
 
 @onready var anim = $AnimationPlayer as AnimationPlayer
+@onready var anim_2 = $AnimationPlayer_2 as AnimationPlayer
+@onready var Effect_sprite = $RigidBody2D/Effect as Sprite2D
 @onready var rig = $RigidBody2D as RigidBody2D
 @onready var col = $RigidBody2D/Area2D as Area2D
 @onready var world = $".."/".."/".."/".." as Node2D
 
-func _ready():
-	parried = false
-	pass
 
 func _physics_process(delta):
 	if world.timming:
@@ -27,6 +30,9 @@ func _physics_process(delta):
 		rig.freeze = true
 		anim.pause()
 		self.modulate = world.mod
+		
+	if separeted:
+		Effect_sprite.global_position = pos_exp
 
 func ball_exploded():
 	anim.play("poof")
@@ -41,7 +47,7 @@ func _on_area_2d_area_entered(area):
 		if area.is_in_group("Enemy"):
 			area.get_parent().hurt()
 		elif area.is_in_group("Player"):
-			if area.get_parent().is_parrying():
+			if area.get_parent().is_parrying():    ## <<<<<<<<<<<<<<<< PARRY
 				
 				var ball_dir = -rig.linear_velocity.normalized()
 				var player_dir_txt = area.get_parent().last_direction
@@ -59,7 +65,11 @@ func _on_area_2d_area_entered(area):
 				
 				if(dot_product > 0.4):
 					parried = true
-					rig.linear_velocity = -rig.linear_velocity
+					rig.linear_velocity = -rig.linear_velocity * parry_boost
+					anim.play("parry")
+					anim_2.play("parry")
+					separeted = true
+					pos_exp = rig.global_position
 					return
 				else:
 					area.get_parent().recieve_damage(1)
@@ -72,3 +82,5 @@ func _on_area_2d_area_entered(area):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "poof":
 		queue_free()
+	elif anim_name == "parry":
+		anim.play("normal")

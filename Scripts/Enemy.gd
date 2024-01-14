@@ -67,9 +67,9 @@ func _on_animation_player_animation_finished(anim_name):
 
 func hurt():
 	if !dead:
+		dead = true
 		anim.play("death")
 		acting = true
-		dead = true
 		await get_tree().create_timer(0.4).timeout
 		col.queue_free()
 
