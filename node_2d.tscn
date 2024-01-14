@@ -96,6 +96,12 @@ position = Vector2(-86, -57)
 position = Vector2(0, 8)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.5
+drag_top_margin = 0.5
+drag_right_margin = 0.5
+drag_bottom_margin = 0.5
 
 [node name="Enemy" parent="." instance=ExtResource("3_yxmcs")]
 position = Vector2(480, 234)
