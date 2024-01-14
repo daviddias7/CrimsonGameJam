@@ -62,13 +62,12 @@ func _on_area_2d_area_entered(area):
 					rig.linear_velocity = -rig.linear_velocity
 					return
 				else:
-					area.get_parent().recieve_damage()
+					area.get_parent().recieve_damage(1)
 			else:
-				area.get_parent().recieve_damage()
+				area.get_parent().recieve_damage(1)
+		elif area.is_in_group("Interactive"):
+			area.get_parent().hitted()
 		ball_exploded()
-		
-		
-		
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "poof":

@@ -74,19 +74,20 @@ func _physics_process(delta):
 
 func time_magic ():
 	world.timming = false
+	await get_tree().create_timer(0.3).timeout
 	world.mod = 0xa6a6b0ff
 	walking_speed = SLOW_SPEED
 	walk_type = "slow_walk_"
-	await get_tree().create_timer(seconds_stopped).timeout
+	await get_tree().create_timer(seconds_stopped - 0.3).timeout
 	world.timming = true
 	world.mod = 0xffffffff
 	walking_speed = SPEED
 	walk_type = "walk_"
 	pass
 
-func recieve_damage():
+func recieve_damage(damage):
 	#print("Player Damaged")
-	health -= 1
+	health -= damage
 	#if health == 0:
 		#print("Game Over")
 

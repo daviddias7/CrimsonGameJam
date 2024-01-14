@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://mhbholu861re"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_bdcdf"]
-[ext_resource type="Texture2D" uid="uid://078m8wxo6aqy" path="res://Background/Background_006.jpg" id="1_crnfs"]
+[ext_resource type="Texture2D" path="res://Background/Background_006.jpg" id="1_crnfs"]
 [ext_resource type="FontFile" uid="uid://cwj7tfrpghkdx" path="res://Fonts/SnowtopCaps.otf" id="2_l6b3x"]
 
 [node name="Main_menu" type="Control"]
