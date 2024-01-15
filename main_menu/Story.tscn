@@ -1,0 +1,346 @@
+[gd_scene load_steps=14 format=3 uid="uid://dxd7iiv14o7ga"]
+
+[ext_resource type="Script" path="res://Scripts/Story.gd" id="1_gxbax"]
+[ext_resource type="Texture2D" uid="uid://078m8wxo6aqy" path="res://Background/Background_006.jpg" id="1_qw5ik"]
+[ext_resource type="Texture2D" uid="uid://cl2amgqggp7nt" path="res://Sprites/faces/_158629dd-6c6c-4564-bfd7-c70718901e06.png" id="2_coci7"]
+[ext_resource type="Texture2D" uid="uid://bkp4meiqxsurr" path="res://Sprites/faces/caixa de texto.png" id="3_6yvqi"]
+[ext_resource type="Texture2D" uid="uid://dt342wr886isg" path="res://Sprites/faces/OIG.png" id="3_xcnr7"]
+[ext_resource type="FontFile" uid="uid://cwj7tfrpghkdx" path="res://Fonts/SnowtopCaps.otf" id="5_vfh3h"]
+
+[sub_resource type="Animation" id="Animation_taibg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mae:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Filho:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0392157, 0.0392157, 0.0392157, 0.745098)]
+}
+
+[sub_resource type="Animation" id="Animation_nk0ri"]
+resource_name = "go_to_1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 114]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mae:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Filho:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0392157, 0.0392157, 0.0392157, 0.745098)]
+}
+
+[sub_resource type="Animation" id="Animation_pkuxn"]
+resource_name = "go_to_2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [114, 160]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mae:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.196078, 0.196078, 0.196078, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Filho:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g1a4k"]
+resource_name = "go_to_3"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [160, 220]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mae:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Filho:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.196078, 0.196078, 0.196078, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_25ppt"]
+resource_name = "go_to_4"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [220, 368]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mae:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Filho:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.196078, 0.196078, 0.196078, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8ujxa"]
+resource_name = "go_to_5"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [368, 410]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mae:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.196078, 0.196078, 0.196078, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Filho:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7w0x8"]
+_data = {
+"RESET": SubResource("Animation_taibg"),
+"go_to_1": SubResource("Animation_nk0ri"),
+"go_to_2": SubResource("Animation_pkuxn"),
+"go_to_3": SubResource("Animation_g1a4k"),
+"go_to_4": SubResource("Animation_25ppt"),
+"go_to_5": SubResource("Animation_8ujxa")
+}
+
+[node name="Story" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gxbax")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_qw5ik")
+
+[node name="Filho" type="TextureRect" parent="."]
+modulate = Color(0.0392157, 0.0392157, 0.0392157, 0.745098)
+layout_mode = 0
+offset_left = 63.0
+offset_top = 338.0
+offset_right = 321.0
+offset_bottom = 596.0
+texture = ExtResource("3_xcnr7")
+
+[node name="Mae" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 36.0
+offset_right = 1186.0
+offset_bottom = 1078.0
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("2_coci7")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.752941)
+layout_mode = 0
+offset_left = 371.0
+offset_top = 39.0
+offset_right = 927.0
+offset_bottom = 604.0
+texture = ExtResource("3_6yvqi")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 53.0
+offset_right = 1094.0
+offset_bottom = 613.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Mother:
+Happy Christmas Eve son!
+Your brothers are having a snowball war, and
+they really want to play with you!
+
+Son:
+But I don't want to play with them mom...
+
+Mother:
+You're going to play with them, I'm telling you!!
+
+Oh! But there's one little hitch...
+You can't throw any snowballs at them,
+You're already too big for this, you'll have to find your way to win!!
+
+Son:
+Alright, mom...
+I'll take it easy..."
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 965.0
+offset_top = 499.0
+offset_right = 1138.0
+offset_bottom = 606.0
+theme_override_fonts/font = ExtResource("5_vfh3h")
+theme_override_font_sizes/font_size = 47
+text = "Next"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7w0x8")
+}
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
