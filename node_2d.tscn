@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://8fvym6adnsad"]
+[gd_scene load_steps=14 format=3 uid="uid://8fvym6adnsad"]
 
 [ext_resource type="Script" path="res://Scripts/node_2d.gd" id="1_ijsvs"]
 [ext_resource type="Texture2D" uid="uid://c5oe7e7lelhtb" path="res://SnowFloor.png" id="1_r2ebt"]
 [ext_resource type="PackedScene" uid="uid://gx31knisxf1h" path="res://prefabs/player.tscn" id="2_sf2pd"]
 [ext_resource type="PackedScene" uid="uid://bepr17gyshtpa" path="res://prefabs/enemy_1.tscn" id="3_yxmcs"]
 [ext_resource type="PackedScene" uid="uid://b6n1a74sj5wrt" path="res://prefabs/barrel.tscn" id="5_nrt6g"]
+[ext_resource type="Texture2D" uid="uid://c22xvtqxtl7yo" path="res://Sprites/Efects/TimeStopSpriteSheet.png" id="6_vt0t3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8nuvj"]
 texture = ExtResource("1_r2ebt")
@@ -82,6 +83,224 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_8nuvj")
 
+[sub_resource type="Animation" id="Animation_ls2ye"]
+resource_name = "has_magic"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_vt0t3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.576471, 0.576471, 0.576471, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g58o6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_vt0t3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.705882, 0.705882, 0.784314, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s22yk"]
+resource_name = "use_magic"
+length = 0.2
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_vt0t3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8, 14]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.576471, 0.576471, 0.576471, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jcof4"]
+resource_name = "hasnt_magic"
+length = 0.1
+loop_mode = 1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_vt0t3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.576471, 0.576471, 0.576471, 0.705882)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2r1u"]
+_data = {
+"RESET": SubResource("Animation_g58o6"),
+"has_magic": SubResource("Animation_ls2ye"),
+"hasnt_magic": SubResource("Animation_jcof4"),
+"use_magic": SubResource("Animation_s22yk")
+}
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ijsvs")
 
@@ -93,20 +312,6 @@ layer_0/tile_data = PackedInt32Array(65535, 393216, 0, 65534, 393216, 0, -2, 393
 [node name="Barrel" parent="." instance=ExtResource("5_nrt6g")]
 position = Vector2(175, 290)
 
-[node name="Player" parent="." instance=ExtResource("2_sf2pd")]
-position = Vector2(-86, -57)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, 8)
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.5
-drag_top_margin = 0.5
-drag_right_margin = 0.5
-drag_bottom_margin = 0.5
-
 [node name="Enemy" parent="." instance=ExtResource("3_yxmcs")]
 position = Vector2(480, 234)
 
@@ -116,8 +321,33 @@ position = Vector2(505, 312)
 [node name="Barrel3" parent="." instance=ExtResource("5_nrt6g")]
 position = Vector2(376, 90)
 
+[node name="Player" parent="." instance=ExtResource("2_sf2pd")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, 8)
+position_smoothing_speed = 20.0
+drag_left_margin = 0.0
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
+
+[node name="AnimationPlayer_magic" type="AnimationPlayer" parent="Player/Camera2D"]
+libraries = {
+"": SubResource("AnimationLibrary_h2r1u")
+}
+autoplay = "has_magic"
+
+[node name="Sprite2D2" type="Sprite2D" parent="Player/Camera2D"]
+modulate = Color(0.705882, 0.705882, 0.784314, 1)
+position = Vector2(-483, 234)
+scale = Vector2(3, 3)
+texture = ExtResource("6_vt0t3")
+hframes = 15
+
 [node name="Enemy2" parent="." instance=ExtResource("3_yxmcs")]
 position = Vector2(-169, 124)
 
 [node name="Enemy3" parent="." instance=ExtResource("3_yxmcs")]
 position = Vector2(159, -91)
+
+[connection signal="animation_finished" from="Player/Camera2D/AnimationPlayer_magic" to="Player" method="_on_animation_player_magic_animation_finished"]
