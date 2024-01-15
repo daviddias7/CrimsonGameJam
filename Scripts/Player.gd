@@ -7,19 +7,25 @@ const seconds_stopped = 2 # Em segundos
 
 var health = 3;
 var last_direction = "right"
+
 var acting = false
+
 var parrying = false
 var can_parry = true
+
+var can_time_magic = true
+
 var walking_speed = SPEED
 var walk_type = "walk_"
 
 @onready var anim = $AnimationPlayer as AnimationPlayer
 @onready var world = $".." as Node2D
-@onready var timer = $Timer as Timer
+@onready var parry_timer = $ParryTimer as Timer
+@onready var time_magic_timer = $TimeMagicTimer as Timer
 
 func _physics_process(delta):
 
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and can_time_magic:
 		if last_direction == "left":
 			anim.play("stop_left")
 		elif last_direction == "right":
@@ -73,6 +79,9 @@ func _physics_process(delta):
 			anim.stop()
 
 func time_magic ():
+	can_time_magic = false
+	time_magic_timer.start(10)
+	
 	world.timming = false
 	await get_tree().create_timer(0.3).timeout
 	world.mod = 0xa6a6b0ff
@@ -98,10 +107,14 @@ func _on_animation_player_animation_finished(anim_name):
 		acting = false
 		parrying = false
 		can_parry = false
-		timer.start(0.5)
+		parry_timer.start(0.5)
 		
 func is_parrying():
 	return parrying
 
-func _on_timer_timeout():
+func _on_parry_timer_timeout():
 	can_parry = true
+
+
+func _on_time_magic_timer_timeout():
+	can_time_magic = true
