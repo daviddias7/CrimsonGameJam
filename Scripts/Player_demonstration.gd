@@ -21,8 +21,11 @@ var can_parry = true
 
 var timer_okay = true
 
+func _ready():
+	if !to_parry and !to_stop:
+		anim.play("death")
+		
 func _physics_process(delta):
-
 	if to_stop and timer_okay:
 		timer_okay = false
 		if last_direction == "left":
