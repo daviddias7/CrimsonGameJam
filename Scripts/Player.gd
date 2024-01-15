@@ -23,8 +23,13 @@ var walk_type = "walk_"
 @onready var parry_timer = $ParryTimer as Timer
 @onready var time_magic_timer = $TimeMagicTimer as Timer
 
-func _physics_process(delta):
+@onready var anim_magic = $"Camera2D/AnimationPlayer_magic" as AnimationPlayer
 
+
+
+
+func _physics_process(delta):
+	
 	if Input.is_action_just_pressed("ui_accept") and can_time_magic:
 		if last_direction == "left":
 			anim.play("stop_left")
@@ -80,6 +85,7 @@ func _physics_process(delta):
 
 func time_magic ():
 	can_time_magic = false
+	anim_magic.play("use_magic")
 	time_magic_timer.start(10)
 	
 	world.timming = false
@@ -95,10 +101,10 @@ func time_magic ():
 	pass
 
 func recieve_damage(damage):
-	#print("Player Damaged")
-	health -= damage
-	#if health == 0:
-		#print("Game Over")
+	world.timming = false
+	world.mod = 0xa6a6b0ff
+	anim.play("death")
+	acting = true
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name.begins_with("stop_"):
@@ -108,6 +114,8 @@ func _on_animation_player_animation_finished(anim_name):
 		parrying = false
 		can_parry = false
 		parry_timer.start(0.5)
+	elif anim_name == "death":
+		pass
 		
 func is_parrying():
 	return parrying
@@ -118,3 +126,9 @@ func _on_parry_timer_timeout():
 
 func _on_time_magic_timer_timeout():
 	can_time_magic = true
+	anim_magic.play("has_magic")
+
+
+func _on_animation_player_magic_animation_finished(anim_name):
+	if anim_name == "use_magic":
+		anim_magic.play("hasnt_magic")
