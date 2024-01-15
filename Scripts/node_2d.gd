@@ -14,7 +14,7 @@ func _process(delta):
 
 func _on_enemy_spawner_timeout():
 	var enemy_instance = enemy_scene.instantiate()
-	var x = player.position.x + 1152 if player.position.x + 1152 < 750 else player.position.x - 1152
-	var y = player.position.y + 648 if player.position.y + 648 < 650 else player.position.y - 648
-	enemy_instance.position = Vector2(x, y)
+	#var x = player.position.x + 1152 if player.position.x + 1152 < 750 else player.position.x - 1152
+	#var y = player.position.y + 648 if player.position.y + 648 < 650 else player.position.y - 648
+	enemy_instance.position = Vector2(0, 0)
 	add_child(enemy_instance)
