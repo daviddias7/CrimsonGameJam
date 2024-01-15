@@ -803,6 +803,8 @@ visible = false
 position = Vector2(0, 16)
 shape = SubResource("CapsuleShape2D_alpdl")
 
+[node name="TimeMagicTimer" type="Timer" parent="."]
+
 [node name="ParryTimer" type="Timer" parent="."]
 wait_time = 0.5
 
@@ -825,9 +827,6 @@ debug_color = Color(0.262745, 0.627451, 0.235294, 0.419608)
 [node name="Magic" type="Sprite2D" parent="."]
 position = Vector2(0, 11)
 
-[node name="TimeMagicTimer" type="Timer" parent="."]
-
-[connection signal="timeout" from="ParryTimer" to="." method="_on_parry_timer_timeout"]
-[connection signal="timeout" from="ParryTimer" to="." method="_on_timer_timeout"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="TimeMagicTimer" to="." method="_on_time_magic_timer_timeout"]
+[connection signal="timeout" from="ParryTimer" to="." method="_on_parry_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
