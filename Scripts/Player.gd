@@ -30,7 +30,7 @@ var walk_type = "walk_"
 
 func _physics_process(delta):
 	
-	if Input.is_action_just_pressed("ui_accept") and can_time_magic:
+	if Input.is_action_just_pressed("ui_accept") and can_time_magic and !acting:
 		if last_direction == "left":
 			anim.play("stop_left")
 		elif last_direction == "right":
@@ -42,7 +42,7 @@ func _physics_process(delta):
 		acting = true
 		time_magic()
 	
-	if Input.is_action_just_pressed("parry") and can_parry:
+	if Input.is_action_just_pressed("parry") and can_parry and !acting:
 		if last_direction == "left":
 			anim.play("parring_left")
 		elif last_direction == "right":
