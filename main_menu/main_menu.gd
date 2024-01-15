@@ -9,6 +9,7 @@ extends Control
 @onready var start_level = preload("res://main_menu/Story.tscn") as PackedScene
 
 func _ready():
+	MusicController.play_music()
 	newgame.button_down.connect(on_start_pressed)
 	exit.button_down.connect(on_exit_pressed)
 	
