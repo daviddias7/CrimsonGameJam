@@ -69,6 +69,7 @@ func hurt():
 	if !dead:
 		dead = true
 		anim.play("death")
+		world.num = world.num + 1
 		acting = true
 		await get_tree().create_timer(0.4).timeout
 		col.queue_free()
