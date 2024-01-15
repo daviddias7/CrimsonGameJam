@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgoxmyidpufvw"]
+
+[ext_resource type="Script" path="res://Scripts/Game_over.gd" id="1_ke2oa"]
+[ext_resource type="Texture2D" uid="uid://078m8wxo6aqy" path="res://Background/Background_006.jpg" id="2_g0nqk"]
+[ext_resource type="FontFile" uid="uid://cwj7tfrpghkdx" path="res://Fonts/SnowtopCaps.otf" id="3_harnp"]
+[ext_resource type="PackedScene" uid="uid://ws054qupodsj" path="res://prefabs/player_demo.tscn" id="4_ln0nq"]
+
+[node name="Game_over" type="Node2D"]
+script = ExtResource("1_ke2oa")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_g0nqk")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 74.0
+offset_top = 60.0
+offset_right = 1086.0
+offset_bottom = 141.0
+theme_override_colors/font_color = Color(0.623529, 0.827451, 1, 1)
+theme_override_colors/font_outline_color = Color(0.266667, 0.478431, 0.921569, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_harnp")
+theme_override_font_sizes/font_size = 90
+text = "Game Over!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 243.0
+offset_top = 454.0
+offset_right = 465.0
+offset_bottom = 561.0
+theme_override_fonts/font = ExtResource("3_harnp")
+theme_override_font_sizes/font_size = 47
+text = "Try Again"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 677.0
+offset_top = 450.0
+offset_right = 899.0
+offset_bottom = 557.0
+theme_override_fonts/font = ExtResource("3_harnp")
+theme_override_font_sizes/font_size = 47
+text = "Menu"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 157.0
+offset_top = 293.0
+offset_right = 1284.0
+offset_bottom = 458.0
+theme_override_colors/font_color = Color(0.623529, 0.827451, 1, 1)
+theme_override_colors/font_outline_color = Color(0.266667, 0.478431, 0.921569, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_harnp")
+theme_override_font_sizes/font_size = 52
+text = "You killed x Brothers..."
+horizontal_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("4_ln0nq")]
+position = Vector2(252, 306)
+scale = Vector2(2.5, 2.5)
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]
