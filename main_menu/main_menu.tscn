@@ -53,7 +53,7 @@ theme_override_colors/font_outline_color = Color(0.266667, 0.478431, 0.921569, 1
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_l6b3x")
 theme_override_font_sizes/font_size = 90
-text = "Game Title"
+text = "Frozen times"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
@@ -79,30 +79,6 @@ theme_override_colors/font_hover_pressed_color = Color(0.623529, 0.827451, 1, 1)
 theme_override_fonts/font = ExtResource("2_l6b3x")
 theme_override_font_sizes/font_size = 60
 text = "NEW GAME"
-
-[node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(360, 64)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.623529, 0.827451, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.623529, 0.827451, 1, 1)
-theme_override_colors/font_hover_color = Color(0.623529, 0.827451, 1, 1)
-theme_override_colors/font_focus_color = Color(0.623529, 0.827451, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.623529, 0.827451, 1, 1)
-theme_override_fonts/font = ExtResource("2_l6b3x")
-theme_override_font_sizes/font_size = 60
-text = "OPTIONS"
-
-[node name="Credits" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(360, 64)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.623529, 0.827451, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.623529, 0.827451, 1, 1)
-theme_override_colors/font_hover_color = Color(0.623529, 0.827451, 1, 1)
-theme_override_colors/font_focus_color = Color(0.623529, 0.827451, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.623529, 0.827451, 1, 1)
-theme_override_fonts/font = ExtResource("2_l6b3x")
-theme_override_font_sizes/font_size = 60
-text = "CREDITS"
 
 [node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(360, 64)

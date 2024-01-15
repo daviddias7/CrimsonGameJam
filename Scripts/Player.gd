@@ -25,7 +25,7 @@ var walk_type = "walk_"
 
 @onready var anim_magic = $"Camera2D/AnimationPlayer_magic" as AnimationPlayer
 
-
+@onready var game_over = preload("res://main_menu/Game_Over.tscn") as PackedScene
 
 
 func _physics_process(delta):
@@ -115,7 +115,8 @@ func _on_animation_player_animation_finished(anim_name):
 		can_parry = false
 		parry_timer.start(0.5)
 	elif anim_name == "death":
-		pass
+		get_tree().change_scene_to_packed(game_over)
+		ProjectSettings.set_setting("physics/2d/default_gravity", world.num)
 		
 func is_parrying():
 	return parrying
