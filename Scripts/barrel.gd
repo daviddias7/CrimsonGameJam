@@ -8,6 +8,7 @@ var exploding = false
 
 @onready var col = $Area2D/CollisionShape2D as CollisionShape2D
 @onready var anim = $AnimationPlayer as AnimationPlayer
+@onready var sprite = $Sprite2D as Sprite2D
 @onready var world = $".." as Node2D
 
 
@@ -21,6 +22,7 @@ func hitted():
 
 func explode():
 	anim.play("Explosion")
+	sprite.position.y = -14
 	exploding = true
 	col.shape = CircleShape2D.new()
 	col.shape.radius = explosion_range
@@ -36,7 +38,6 @@ func _on_area_2d_area_entered(area):
 			area.get_parent().recieve_damage(explosion_damage)
 		elif area.is_in_group("Interactive"):
 			area.get_parent().Hitted()
-
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Explosion":

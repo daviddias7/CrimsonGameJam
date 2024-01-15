@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
+const SPEED = 0
 
 var last_direction = "right"
 var acting = false
@@ -21,32 +21,32 @@ func _physics_process(delta):
 		if time_stopped:
 			play_time()
 
-		if !acting:
-			var direction = (player.position - position).normalized()
-
-			if direction.x:
-				velocity.x = direction.x * SPEED
-				if direction.x < 0:
-					last_direction = "left"
-				else:
-					last_direction = "right"
-			else:
-				velocity.x = move_toward(velocity.x, 0, SPEED)
-				
-			if direction.y:
-				velocity.y = direction.y * SPEED
-			else:
-				velocity.y = move_toward(velocity.y, 0, SPEED)
-			
-			if absf(velocity.x) < absf(velocity.y):
-				if direction.y < 0:
-					last_direction = "up"
-				else:
-					last_direction = "down"
-			if velocity:
-				anim.play("walk_" + last_direction)
-						
-			move_and_slide()
+		#if !acting:
+			#var direction = (player.position - position).normalized()
+#
+			#if direction.x:
+				#velocity.x = direction.x * SPEED
+				#if direction.x < 0:
+					#last_direction = "left"
+				#else:
+					#last_direction = "right"
+			#else:
+				#velocity.x = move_toward(velocity.x, 0, SPEED)
+				#
+			#if direction.y:
+				#velocity.y = direction.y * SPEED
+			#else:
+				#velocity.y = move_toward(velocity.y, 0, SPEED)
+			#
+			#if absf(velocity.x) < absf(velocity.y):
+				#if direction.y < 0:
+					#last_direction = "up"
+				#else:
+					#last_direction = "down"
+			#if velocity:
+				#anim.play("walk_" + last_direction)
+						#
+			#move_and_slide()
 	else:
 		stop_time()
 	

@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl0tldrk2ruaj"]
+
+[ext_resource type="Script" path="res://Scripts/Tutorial_1.gd" id="1_6asjj"]
+[ext_resource type="Texture2D" uid="uid://078m8wxo6aqy" path="res://Background/Background_006.jpg" id="2_24mpv"]
+[ext_resource type="FontFile" uid="uid://cwj7tfrpghkdx" path="res://Fonts/SnowtopCaps.otf" id="3_irsp0"]
+[ext_resource type="PackedScene" uid="uid://ws054qupodsj" path="res://prefabs/player_demo.tscn" id="4_731da"]
+[ext_resource type="PackedScene" uid="uid://ctrfniieltwip" path="res://prefabs/enemy_1_demo.tscn" id="5_wge3j"]
+
+[node name="Tutorial_1" type="Node2D"]
+script = ExtResource("1_6asjj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_24mpv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 74.0
+offset_top = 60.0
+offset_right = 1086.0
+offset_bottom = 141.0
+theme_override_colors/font_color = Color(0.623529, 0.827451, 1, 1)
+theme_override_colors/font_outline_color = Color(0.266667, 0.478431, 0.921569, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_irsp0")
+theme_override_font_sizes/font_size = 90
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 917.0
+offset_top = 484.0
+offset_right = 1090.0
+offset_bottom = 591.0
+theme_override_fonts/font = ExtResource("3_irsp0")
+theme_override_font_sizes/font_size = 47
+text = "Next"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -144.0
+offset_top = 480.0
+offset_right = 983.0
+offset_bottom = 645.0
+theme_override_colors/font_color = Color(0.623529, 0.827451, 1, 1)
+theme_override_colors/font_outline_color = Color(0.266667, 0.478431, 0.921569, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_irsp0")
+theme_override_font_sizes/font_size = 52
+text = "Press \"E\" to parry
+Redirect the shot to win"
+horizontal_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("4_731da")]
+position = Vector2(842, 294)
+scale = Vector2(2, 2)
+to_parry = true
+
+[node name="Enemy" parent="." instance=ExtResource("5_wge3j")]
+position = Vector2(282, 295)
+scale = Vector2(2, 2)
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

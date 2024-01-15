@@ -6,7 +6,7 @@ extends Control
 @onready var options = $MarginContainer/HBoxContainer/VBoxContainer/Options as Button
 @onready var credits = $MarginContainer/HBoxContainer/VBoxContainer/Credits as Button
 @onready var exit = $MarginContainer/HBoxContainer/VBoxContainer/Exit as Button
-@onready var start_level = preload("res://node_2d.tscn") as PackedScene
+@onready var start_level = preload("res://main_menu/Story.tscn") as PackedScene
 
 func _ready():
 	newgame.button_down.connect(on_start_pressed)
@@ -18,4 +18,3 @@ func on_start_pressed() -> void:
 	
 func on_exit_pressed() -> void:
 		get_tree().quit()
-		
